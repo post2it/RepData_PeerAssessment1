@@ -3,23 +3,39 @@ title: "Reproducible Research: Peer Assessment 1"
 output: 
   html_document:
     keep_md: true
+
 ---
-
-
 ## Loading and preprocessing the data
 
 
+```{r one, echo=TRUE}
+dataset <-  read.csv("activity.csv", header = TRUE)
+head (dataset)
+set.seed(2)
+## What is mean total number of steps taken per day? With missing DATA
+exercise <- dataset[complete.cases(dataset),]
+#str(exercise)
+outdata <- aggregate(steps ~ date, data = exercise, sum)
+h <- hist(outdata$steps,  
+          breaks = 9,  
+          freq = T,
+          col = "cyan", 
+          main = "Activity",
+          xlab = "Number of daily steps")
 
 ## What is mean total number of steps taken per day?
+steps<-outdata$steps
+options(digits = 5)
+mean1 <- mean(steps)
+mean(steps)
+median1 <- median(steps)
+median(steps)
+## What is mean total number of steps taken per day? With missing DATA
+
+## I am stuck on interval question and submitting what is working.
+
+```
+##### The mean is `r  mean1`   and the median is `r median1` for dataset with missing data.
 
 
 
-## What is the average daily activity pattern?
-
-
-
-## Imputing missing values
-
-
-
-## Are there differences in activity patterns between weekdays and weekends?
